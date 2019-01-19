@@ -26,10 +26,15 @@ function BlogPost (props) {
       )}
       <Container>
         <div className={styles.grid}>
-          <div className={styles.mainContent}>
+          <article className={styles.mainContent}>
             <h1 className={styles.title}>{title}</h1>
             {_rawBody && <BlockContent blocks={_rawBody} />}
-          </div>
+            <div>
+              <form>
+                <input type="string" name="name">
+              </form>
+            </div>
+          </article>
           <aside className={styles.metaContent}>
             {publishedAt && (
               <div className={styles.publishedAt}>
