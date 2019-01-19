@@ -1,5 +1,4 @@
 import External from 'react-icons/lib/fa/external-link'
-
 /**
  * This is the schema definition for the rich text fields used for
  * for this blog studio. When you import it in schemas.js it can be
@@ -40,7 +39,7 @@ export default {
         annotations: [
           {
             title: 'External Link',
-            name: 'link',
+            name: 'externalLink',
             type: 'object',
             blockEditor: {
               icon: External
@@ -49,7 +48,7 @@ export default {
               {
                 title: 'URL',
                 name: 'href',
-                type: 'url',
+                type: 'string',
                 validation: Rule =>
                   Rule.uri({
                     allowRelative: true,
@@ -64,6 +63,7 @@ export default {
               }
             ]
           }
+
         ]
       }
     },

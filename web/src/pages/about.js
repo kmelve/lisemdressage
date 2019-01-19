@@ -3,39 +3,37 @@ import { graphql } from 'gatsby'
 import BlockContent from '../components/block-content'
 import Container from '../components/container'
 import GraphQLErrorList from '../components/graphql-error-list'
-import PeopleGrid from '../components/people-grid'
+import { buildImageObj } from '../lib/helpers'
+import { imageUrlFor } from '../lib/image-url'
 import SEO from '../components/seo'
+import styles from '../components/blog-post.module.css'
 import Layout from '../containers/layout'
-import { mapEdgesToNodes } from '../lib/helpers'
 
 import { responsiveTitle1 } from '../components/typography.module.css'
 
 export const query = graphql`
   query AboutPageQuery {
-    page: sanityPage(_id: { eq: "about" }) {
-      title
-      _rawBody
+    person:
+  sanityPerson(_id: { eq: "a86dd724-8da5-4a72-9e97-31c9c9589f96"}) {
+    _id
+    slug {
+      current
     }
-    people: allSanityPerson {
-      edges {
-        node {
-          id
-          image {
-            asset {
-              _id
-            }
-          }
-          name
-          _rawBio
-        }
+    name
+    _rawBio
+    image {
+      asset {
+        _id
       }
     }
+
+  }
+
   }
 `
 
 const AboutPage = props => {
   const { data, errors } = props
-
   if (errors) {
     return (
       <Layout>
@@ -44,22 +42,30 @@ const AboutPage = props => {
     )
   }
 
-  const page = data && data.page
-  const personNodes = data && data.people && mapEdgesToNodes(data.people)
-
-  if (!page) {
-    throw new Error(
-      'Missing "About" page data. Open the studio at http://localhost:3333 and add "About" page data'
-    )
-  }
-
+  const { person } = data
+  const { name, _rawBio, image} = person
+  console.log({image})
   return (
     <Layout>
-      <SEO title={page.title} />
+      <SEO title={name} />
+      {image && image.asset && (
+        <div className={styles.mainImage}>
+        <img
+          src={imageUrlFor(buildImageObj(image))
+            .width(1200)
+            .height(Math.floor((9 / 16) * 1200))
+            .fit('crop')
+            .url()}
+          alt={'Lise M'}
+        />
+      </div>
+      )}
       <Container>
-        <h1 className={responsiveTitle1}>{page.title}</h1>
-        <BlockContent blocks={page._rawBody || []} />
-        {personNodes && personNodes.length > 0 && <PeopleGrid items={personNodes} title='People' />}
+        <h1 className={responsiveTitle1}>{name}</h1>
+        <BlockContent
+          blocks={_rawBio || []}
+        />
+
       </Container>
     </Layout>
   )

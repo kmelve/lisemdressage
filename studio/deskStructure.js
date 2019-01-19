@@ -19,7 +19,7 @@ export default () =>
         )
         .icon(MdSettings),
       S.listItem()
-        .title('Company Info')
+        .title('Info')
         .child(
           S.editor()
             .id('companyInfo')
@@ -28,14 +28,10 @@ export default () =>
         )
         .icon(MdBusiness),
       S.listItem()
-        .title('Projects')
-        .schemaType('project')
-        .child(S.documentTypeList('project')),
-      S.listItem()
         .title('Blog posts')
         .schemaType('post')
         .child(S.documentTypeList('post').title('Blog posts')),
-      S.listItem()
+      /* S.listItem()
         .title('Pages')
         .child(
           S.list()
@@ -60,7 +56,7 @@ export default () =>
                 )
                 .icon(FaFileO)
             ])
-        ),
+        ), */
       S.listItem()
         .title('People')
         .schemaType('person')

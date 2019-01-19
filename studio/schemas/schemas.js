@@ -16,6 +16,7 @@ import person from './person'
 import post from './post'
 import postAuthor from './postAuthor'
 import project from './project'
+import link from './link'
 import projectMember from './projectMember'
 import siteSettings from './siteSettings'
 import slideshow from './slideshow'
@@ -32,6 +33,7 @@ export default createSchema({
     blockContent,
     blockText,
     category,
+    link,
     companyInfo,
     figure,
     mainImage,
