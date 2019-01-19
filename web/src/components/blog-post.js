@@ -22,7 +22,10 @@ function BlogPost (props) {
   } = props
   return (
     <article className={styles.root}>
-      {mainImage &&
+      <Container>
+        <div className={styles.grid}>
+          <article className={styles.mainContent}>
+          {mainImage &&
         mainImage.asset && (
           <div className={styles.mainImage}>
             <img
@@ -35,9 +38,6 @@ function BlogPost (props) {
             />
           </div>
         )}
-      <Container>
-        <div className={styles.grid}>
-          <article className={styles.mainContent}>
             <h1 className={styles.title}>{title}</h1>
             {_rawBody && <BlockContent blocks={_rawBody} />}
             <div>
@@ -59,7 +59,7 @@ function BlogPost (props) {
                   : format(new Date(publishedAt), 'MMMM Do YYYY')}
               </div>
             )}
-            {authors && <RoleList items={authors} title="Author" />}
+            {authors && <RoleList items={authors} title="Forfatter" />}
             {categories && (
               <div className={styles.categories}>
                 <h3 className={styles.categoriesHeadline}>Categories</h3>

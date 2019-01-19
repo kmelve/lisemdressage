@@ -85,7 +85,7 @@ const IndexPage = props => {
         <h1 hidden>Welcome to {site.title}</h1>
         {postNodes && (
           <BlogPostPreviewGrid
-            title='Latest blog posts'
+            title='Nyeste innlegg'
             nodes={postNodes}
             browseMoreHref='/blog/'
           />

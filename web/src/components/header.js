@@ -19,10 +19,10 @@ const Header = ({ onHideNav, onShowNav, showNav, siteTitle }) => (
       <nav className={cn(styles.nav, showNav && styles.showNav)}>
         <ul>
           <li>
-            <Link to='/about/'>About</Link>
+            <Link to='/about/'>Om Lise</Link>
           </li>
           <li>
-            <Link to='/blog/'>Blog</Link>
+            <Link to='/blog/'>Blogg</Link>
           </li>
           <li>
             <a href='https://www.instagram.com/lisemdressage'>Instagram</a>

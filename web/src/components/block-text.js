@@ -1,6 +1,6 @@
 import BaseBlockContent from '@sanity/block-content-to-react'
 import React from 'react'
-
+import Figure from './block-content/figure'
 import typography from './typography.module.css'
 
 const serializers = {
@@ -10,7 +10,10 @@ const serializers = {
         default:
           return <p className={typography.paragraph}>{props.children}</p>
       }
-    }
+    },
+    figure (props) {
+      return <Figure {...props.node} />
+    },
   },
   marks: {
     externalLink: ({ mark, children }) => {

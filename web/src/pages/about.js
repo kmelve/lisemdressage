@@ -44,7 +44,6 @@ const AboutPage = props => {
 
   const { person } = data
   const { name, _rawBio, image} = person
-  console.log({image})
   return (
     <Layout>
       <SEO title={name} />

@@ -19,7 +19,7 @@ export default class CommentForm extends React.Component {
 
     return (
       <div className='article'>
-        <h1>Comments: {title}</h1>
+        <h1>Kommentarer og reaksjoner: {title}</h1>
         <Disqus.CommentCount shortname={disqusShortname} config={disqusConfig}>
           Comments
         </Disqus.CommentCount>
