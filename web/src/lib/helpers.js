@@ -9,8 +9,8 @@ export function mapEdgesToNodes (data) {
   return data.edges.map(edge => edge.node)
 }
 
-export function getBlogUrl (publishedAt, slug) {
-  return `/blog/${format(publishedAt, 'YYYY/MM')}/${slug.current || slug}/`
+export function getBlogUrl (publishedAt, slug = {}) {
+  return `/blog/${format(publishedAt, 'YYYY/MM')}/${slug.current || slug}`
 }
 
 export function buildImageObj (source) {

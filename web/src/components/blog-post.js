@@ -5,34 +5,50 @@ import { imageUrlFor } from '../lib/image-url'
 import BlockContent from './block-content'
 import Container from './container'
 import RoleList from './role-list'
+import ContentForm from './comment-form'
 
 import styles from './blog-post.module.css'
 
 function BlogPost (props) {
-  const { _rawBody, authors, categories, title, mainImage, publishedAt } = props
+  const {
+    _id,
+    _rawBody,
+    authors,
+    categories,
+    title,
+    mainImage,
+    publishedAt,
+    slug
+  } = props
   return (
     <article className={styles.root}>
-      {mainImage && mainImage.asset && (
-        <div className={styles.mainImage}>
-          <img
-            src={imageUrlFor(buildImageObj(mainImage))
-              .width(1200)
-              .height(Math.floor((9 / 16) * 1200))
-              .fit('crop')
-              .url()}
-            alt={mainImage.alt}
-          />
-        </div>
-      )}
+      {mainImage &&
+        mainImage.asset && (
+          <div className={styles.mainImage}>
+            <img
+              src={imageUrlFor(buildImageObj(mainImage))
+                .width(1200)
+                .height(Math.floor(9 / 16 * 1200))
+                .fit('crop')
+                .url()}
+              alt={mainImage.alt}
+            />
+          </div>
+        )}
       <Container>
         <div className={styles.grid}>
           <article className={styles.mainContent}>
             <h1 className={styles.title}>{title}</h1>
             {_rawBody && <BlockContent blocks={_rawBody} />}
             <div>
-              <form>
-                <input type="string" name="name">
-              </form>
+              <ContentForm
+                article={{
+                  slug,
+                  identifier: _id,
+                  title,
+                  publishedAt,
+                }}
+              />
             </div>
           </article>
           <aside className={styles.metaContent}>
@@ -43,7 +59,7 @@ function BlogPost (props) {
                   : format(new Date(publishedAt), 'MMMM Do YYYY')}
               </div>
             )}
-            {authors && <RoleList items={authors} title='Author' />}
+            {authors && <RoleList items={authors} title="Author" />}
             {categories && (
               <div className={styles.categories}>
                 <h3 className={styles.categoriesHeadline}>Categories</h3>
