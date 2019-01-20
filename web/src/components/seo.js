@@ -2,6 +2,9 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
 import { StaticQuery, graphql } from 'gatsby'
+import { buildImageObj } from '../lib/helpers'
+import { imageUrlFor } from '../lib/image-url'
+
 
 const detailsQuery = graphql`
   query SEOQuery {
@@ -14,7 +17,7 @@ const detailsQuery = graphql`
   }
 `
 
-function SEO ({ description, lang, meta, keywords = [], title }) {
+function SEO ({ description, lang, meta, keywords = [], title, image, slug }) {
   return (
     <StaticQuery
       query={detailsQuery}
@@ -22,6 +25,11 @@ function SEO ({ description, lang, meta, keywords = [], title }) {
         if (!data.site) {
           return
         }
+        const ogImage = image && imageUrlFor(buildImageObj(image))
+                .width(1200)
+                .height(Math.floor(1 / 1.91 * 1200))
+                .fit('crop')
+                .url()
         const metaDescription = description || data.site.description
         return (
           <Helmet
@@ -35,6 +43,14 @@ function SEO ({ description, lang, meta, keywords = [], title }) {
                 name: 'description',
                 content: metaDescription
               },
+              {
+                name: 'og:url',
+                content: 'https://www.lisemdressage.no' + slug || 'https://www.lisemdressage.no'
+              },
+              ...(ogImage && {
+                name: 'og:image',
+                content: ogImage
+              }),
               {
                 property: 'og:title',
                 content: title
@@ -83,7 +99,8 @@ function SEO ({ description, lang, meta, keywords = [], title }) {
 SEO.defaultProps = {
   lang: 'en',
   meta: [],
-  keywords: []
+  keywords: [],
+  image: ''
 }
 
 SEO.propTypes = {
@@ -91,7 +108,8 @@ SEO.propTypes = {
   lang: PropTypes.string,
   meta: PropTypes.array,
   keywords: PropTypes.arrayOf(PropTypes.string),
-  title: PropTypes.string.isRequired
+  title: PropTypes.string.isRequired,
+  image: PropTypes.string
 }
 
 export default SEO

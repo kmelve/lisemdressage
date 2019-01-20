@@ -14,6 +14,28 @@ export const query = graphql`
       title
       description
       keywords
+      mainImage {
+            crop {
+              _key
+              _type
+              top
+              bottom
+              left
+              right
+            }
+            hotspot {
+              _key
+              _type
+              x
+              y
+              height
+              width
+            }
+            asset {
+              _id
+            }
+            alt
+          }
     }
 
     posts: allSanityPost(
@@ -80,7 +102,7 @@ const IndexPage = props => {
 
   return (
     <Layout>
-      <SEO title={site.title} description={site.description} keywords={site.keywords} />
+      <SEO title={site.title} description={site.description} keywords={site.keywords} image={site.mainImage} slug='' />
       <Container>
         <h1 hidden>Welcome to {site.title}</h1>
         {postNodes && (

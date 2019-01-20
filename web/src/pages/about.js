@@ -46,7 +46,7 @@ const AboutPage = props => {
   const { name, _rawBio, image} = person
   return (
     <Layout>
-      <SEO title={name} />
+      <SEO title={name} slug='/about' />
       {image && image.asset && (
         <div className={styles.mainImage}>
         <img

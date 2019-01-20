@@ -27,6 +27,11 @@ export default {
       }
     },
     {
+      name: 'mainImage',
+      title: 'Main image',
+      type: 'mainImage'
+    },
+    {
       name: 'author',
       title: 'Author',
       type: 'string'
