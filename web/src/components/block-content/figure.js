@@ -11,6 +11,7 @@ function Figure (props) {
         <img
           src={imageUrlFor(buildImageObj(props))
             .width(1200)
+            .format('jpg')
             .url()}
           alt={props.alt}
         />
