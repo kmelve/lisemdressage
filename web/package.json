@@ -13,7 +13,7 @@
     "format": "prettier-eslint --write \"**/*.js\" \"!.cache/**\" \"!node_modules/**\" \"!public/**\"",
     "test": "echo \"Write tests! -> https://gatsby.app/unit-testing\""
   },
-  "template": "gatsby",
+  "template": "node",
   "dependencies": {
     "@sanity/block-content-to-react": "^2.0.6",
     "@sanity/image-url": "^0.140.0",
