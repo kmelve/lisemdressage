@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import { buildImageObj } from '../../lib/helpers'
 import { imageUrlFor } from '../../lib/image-url'
 
@@ -8,13 +8,29 @@ function Figure (props) {
   return (
     <figure className={styles.root}>
       {props.asset && (
-        <img
-          src={imageUrlFor(buildImageObj(props))
-            .width(1200)
-            .format('jpg')
-            .url()}
-          alt={props.alt}
-        />
+        <Fragment>
+          <source
+            srcSet={imageUrlFor(buildImageObj(props))
+              .width(1200)
+              .format('webp')
+              .url()}
+            type='image/webp'
+          />
+          <source
+            srcSet={imageUrlFor(buildImageObj(props))
+              .width(600)
+              .format('jpg')
+              .url()}
+            type='image/jpeg'
+          />
+          <img
+            src={imageUrlFor(buildImageObj(props))
+              .width(600)
+              .format('jpg')
+              .url()}
+            alt={props.alt}
+          />
+        </Fragment>
       )}
       <figcaption className={styles.caption}>{props.caption}</figcaption>
     </figure>
