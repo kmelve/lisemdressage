@@ -6,7 +6,7 @@ export default class CommentForm extends React.Component {
     const disqusShortname = 'lise-m-dressage'
     const { identifier, title, publishedAt, slug } = this.props.article
 
-    const url = `https://lisemdressage.netlify.com${getBlogUrl(
+    const url = `https://www.lisemdressage.no${getBlogUrl(
       new Date(publishedAt),
       slug
     )}`
