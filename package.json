@@ -21,6 +21,5 @@
     "lerna": "^3.9.0",
     "rimraf": "^2.6.3"
   },
-  "template": "gatsby",
   "main": "web/package.json"
 }
