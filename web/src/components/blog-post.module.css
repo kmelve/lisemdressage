@@ -20,6 +20,9 @@
     height: 100%;
     vertical-align: top;
     object-fit: cover;
+    box-shadow: 0 0 2em 0em #0000002e;
+    border-radius: 3px;
+
   }
 }
 

@@ -5,7 +5,7 @@
     "dataset": "new-blog"
   },
   "project": {
-    "name": "Gatsby Demo"
+    "name": "Lise M Dressage"
   },
   "plugins": [
     "@sanity/base",

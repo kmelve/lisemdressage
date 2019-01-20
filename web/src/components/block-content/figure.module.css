@@ -5,7 +5,14 @@
   @nest & img {
     width: 100%;
     height: auto;
+    box-shadow: 0 0 2em 0em #0000002e;
+    border-radius: 3px;
+    transition: transform 100ms ease-in-out;
   }
+  @nest & img:hover {
+    transform: perspective(1200px) rotateY(6deg) rotateX(-2deg);
+  }
+
 }
 
 .caption {
