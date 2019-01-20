@@ -5,7 +5,7 @@ import GraphQLErrorList from '../components/graphql-error-list'
 import BlogPost from '../components/blog-post'
 import SEO from '../components/seo'
 import Layout from '../containers/layout'
-import { getBlogUrl } from '../lib/helpers'
+import { getBlogUrl, blocksToText } from '../lib/helpers'
 
 export const query = graphql`
   query BlogPostTemplateQuery($id: String!) {
@@ -43,6 +43,7 @@ export const query = graphql`
         current
       }
       _rawBody
+      _rawExcerpt
       authors {
         _key
         person {
@@ -85,6 +86,7 @@ const BlogPostTemplate = props => {
         <SEO
           title={post.title || 'Untitled'}
           image={post.mainImage}
+          description={blocksToText(post._rawExcerpt)}
           slug={getBlogUrl(post.publishedAt, post.slug)}
         />
       )}
