@@ -4,9 +4,13 @@ const { api: { projectId, dataset } } = require('../studio/sanity.json')
 require('dotenv').config()
 
 module.exports = {
+  siteMetadata: {
+    siteUrl: `https://www.lisemdressage.no`,
+  },
   plugins: [
     'gatsby-plugin-postcss',
     'gatsby-plugin-react-helmet',
+    `gatsby-plugin-sitemap`,
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
