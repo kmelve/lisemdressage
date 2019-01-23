@@ -1,5 +1,6 @@
 import { format, distanceInWords, differenceInDays } from 'date-fns'
 import React from 'react'
+import LazyLoad from 'react-lazyload'
 import { buildImageObj } from '../lib/helpers'
 import { imageUrlFor } from '../lib/image-url'
 import BlockContent from './block-content'
@@ -25,30 +26,32 @@ function BlogPost (props) {
       <Container>
         <div className={styles.grid}>
           <article className={styles.mainContent}>
-          {mainImage &&
-        mainImage.asset && (
-          <div className={styles.mainImage}>
-            <img
-              src={imageUrlFor(buildImageObj(mainImage))
-                .width(1200)
-                .height(Math.floor(9 / 16 * 1200))
-                .fit('crop')
-                .url()}
-              alt={mainImage.alt}
-            />
-          </div>
-        )}
+            {mainImage &&
+              mainImage.asset && (
+                <div className={styles.mainImage}>
+                  <img
+                    src={imageUrlFor(buildImageObj(mainImage))
+                      .width(1200)
+                      .height(Math.floor(9 / 16 * 1200))
+                      .fit('crop')
+                      .url()}
+                    alt={mainImage.alt}
+                  />
+                </div>
+              )}
             <h1 className={styles.title}>{title}</h1>
             {_rawBody && <BlockContent blocks={_rawBody} />}
             <div>
-              <ContentForm
-                article={{
-                  slug,
-                  identifier: _id,
-                  title,
-                  publishedAt,
-                }}
-              />
+              <LazyLoad>
+                <ContentForm
+                  article={{
+                    slug,
+                    identifier: _id,
+                    title,
+                    publishedAt
+                  }}
+                />
+              </LazyLoad>
             </div>
           </article>
           <aside className={styles.metaContent}>
