@@ -1,6 +1,7 @@
 import BaseBlockContent from '@sanity/block-content-to-react'
 import React from 'react'
 import Figure from './block-content/figure'
+import LazyLoad from 'react-lazyload';
 import typography from './typography.module.css'
 
 const serializers = {
@@ -12,7 +13,7 @@ const serializers = {
       }
     },
     figure (props) {
-      return <Figure {...props.node} />
+      return  <LazyLoad><Figure {...props.node} /></LazyLoad>
     },
   },
   marks: {

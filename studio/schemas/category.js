@@ -17,5 +17,4 @@ export default {
       type: 'text'
     }
   ],
-  liveEdit: true
 }

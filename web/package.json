@@ -28,7 +28,8 @@
     "postcss-preset-env": "^6.5.0",
     "react": "^16.8.0-alpha.0",
     "react-dom": "^16.8.0-alpha.0",
-    "react-helmet": "^5.2.0"
+    "react-helmet": "^5.2.0",
+    "react-lazyload": "^2.3.0"
   },
   "devDependencies": {
     "eslint": "^5.11.1",

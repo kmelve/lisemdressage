@@ -1,5 +1,6 @@
 import BaseBlockContent from '@sanity/block-content-to-react'
 import React from 'react'
+import Lazyload from 'react-lazyload'
 import Figure from './figure'
 import Slideshow from './slideshow'
 
@@ -41,7 +42,7 @@ const serializers = {
       }
     },
     figure (props) {
-      return <Figure {...props.node} />
+      return <Lazyload height={300}><Figure {...props.node} /></Lazyload>
     },
     slideshow (props) {
       return <Slideshow {...props.node} />

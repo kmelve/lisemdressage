@@ -11,21 +11,18 @@ function Figure (props) {
         <Fragment>
           <source
             srcSet={imageUrlFor(buildImageObj(props))
-              .width(1200)
               .format('webp')
               .url()}
             type='image/webp'
           />
           <source
             srcSet={imageUrlFor(buildImageObj(props))
-              .width(600)
               .format('jpg')
               .url()}
             type='image/jpeg'
           />
           <img
             src={imageUrlFor(buildImageObj(props))
-              .width(600)
               .format('jpg')
               .url()}
             alt={props.alt}
