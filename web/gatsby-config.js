@@ -1,11 +1,10 @@
-
 const { api: { projectId, dataset } } = require('../studio/sanity.json')
 
 require('dotenv').config()
 
 module.exports = {
   siteMetadata: {
-    siteUrl: `https://www.lisemdressage.no`,
+    siteUrl: `https://www.lisemdressage.no`
   },
   plugins: [
     'gatsby-plugin-postcss',
@@ -14,14 +13,15 @@ module.exports = {
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
-        trackingId: "UA-133124493-1",
+        trackingId: 'UA-133124493-1',
         // Puts tracking script in the head instead of the body
         head: false,
         // Setting this parameter is optional
         anonymize: true,
         // Setting this parameter is also optional
-        respectDNT: true,
-      },
+        respectDNT: true
+      }
+    },
     {
       resolve: 'gatsby-source-sanity',
       options: {
