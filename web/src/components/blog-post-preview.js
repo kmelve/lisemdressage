@@ -1,5 +1,6 @@
 import { Link } from 'gatsby'
 import React from 'react'
+import {format} from 'date-fns'
 import { buildImageObj, cn, getBlogUrl } from '../lib/helpers'
 import { imageUrlFor } from '../lib/image-url'
 import BlockText from './block-text'
@@ -21,6 +22,7 @@ function BlogPostPreview (props) {
           />
         )}
       </div>
+      <span className={styles.byline}>{format(props.publishedAt, 'DD.MM.YYYY')}</span>
       <h3 className={cn(responsiveTitle3, styles.title)}>{props.title}</h3>
       {props._rawExcerpt && (
         <div className={styles.excerpt}>

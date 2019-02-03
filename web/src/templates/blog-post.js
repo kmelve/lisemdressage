@@ -1,5 +1,7 @@
 import React from 'react'
 import { graphql } from 'gatsby'
+import PageTransition from 'gatsby-plugin-page-transitions';
+
 import Container from '../components/container'
 import GraphQLErrorList from '../components/graphql-error-list'
 import BlogPost from '../components/blog-post'
@@ -80,12 +82,13 @@ const BlogPostTemplate = props => {
   const { data, errors } = props
   const post = data && data.post
   return (
+    <PageTransition>
     <Layout>
       {errors && <SEO title="GraphQL Error" />}
       {post && (
         <SEO
           title={post.title || 'Untitled'}
-          image={post.mainImage}
+          image={post.mainImage.src}
           description={blocksToText(post._rawExcerpt)}
           slug={getBlogUrl(post.publishedAt, post.slug)}
         />
@@ -98,7 +101,8 @@ const BlogPostTemplate = props => {
       )}
 
       {post && <BlogPost {...post} />}
-    </Layout>
+    </Layout>    </PageTransition>
+
   )
 }
 
