@@ -1,15 +1,24 @@
-import React from 'react'
+import React, {Component} from 'react'
 
 /**
- * Couple of things to note:
- * - width and height is set to 1em
- * - fill is `currentColor` - this will ensure that the icon looks uniform and
- *   that the hover/active state works. You can of course render anything you
- *   would like here, but for plugins that are to be used in more than one
- *   studio, we suggest these rules are followed
+ * Kind of a hacky way to force the Netlify badge to
+ * update every 5 second.
+ *
  **/
-export default () => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 250 250">
-    <path fill="none" stroke="currentColor" strokeWidth="40" d="M5 5h240v240H5z" />
-  </svg>
-)
+export default class MyToolIcon extends Component {
+  state = {
+    time: new Date()
+  }
+  componentDidMount() {
+    this.interval = setInterval(() => this.setState({ time: Date.now() }), 5000);
+  }
+  componentWillUnmount() {
+    clearInterval(this.interval);
+  }
+  render() {
+    return(
+      <img src={`https://api.netlify.com/api/v1/badges/f9cdb3ca-7131-4012-80d7-8484edc4d6fc/deploy-status?${this.state.time}`} />
+    )
+  }
+}
+

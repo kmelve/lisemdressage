@@ -1,4 +1,5 @@
 import React from 'react'
+import Button from 'part:@sanity/components/buttons/default'
 
 // Sanity uses CSS modules for styling. We import a stylesheet and get an
 // object where the keys matches the class names defined in the CSS file and
@@ -21,7 +22,7 @@ class MyTool extends React.Component {
   render() {
     return (
       <div className={styles.container}>
-        <button onClick={this.deployOnNetlify}>Deploy changes!</button>
+        <Button onClick={this.deployOnNetlify}>Deploy changes!</Button>
         {this.state && this.state.published && <h3>Publishing changes – check in a couple of minutes!</h3>}
       </div>
     )
