@@ -1,6 +1,5 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-import PageTransition from 'gatsby-plugin-page-transitions';
 
 import Container from '../components/container'
 import GraphQLErrorList from '../components/graphql-error-list'
@@ -82,7 +81,6 @@ const BlogPostTemplate = props => {
   const { data, errors } = props
   const post = data && data.post
   return (
-    <PageTransition>
     <Layout>
       {errors && <SEO title="GraphQL Error" />}
       {post && (
@@ -101,7 +99,7 @@ const BlogPostTemplate = props => {
       )}
 
       {post && <BlogPost {...post} />}
-    </Layout>    </PageTransition>
+    </Layout>
 
   )
 }

@@ -8,7 +8,6 @@ module.exports = {
   },
   plugins: [
     'gatsby-plugin-postcss',
-    'gatsby-plugin-page-transitions',
     'gatsby-plugin-react-helmet',
     `gatsby-plugin-sitemap`,
     {
