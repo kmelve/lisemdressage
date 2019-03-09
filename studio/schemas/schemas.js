@@ -9,6 +9,7 @@ import blockContent from './blockContent'
 import blockText from './blockText'
 import category from './category'
 import companyInfo from './companyInfo'
+import event from './event'
 import figure from './figure'
 import mainImage from './mainImage'
 import page from './page'
@@ -34,6 +35,7 @@ export default createSchema({
     blockText,
     category,
     link,
+    event,
     companyInfo,
     figure,
     mainImage,
