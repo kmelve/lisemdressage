@@ -1,5 +1,6 @@
 import { Link } from 'gatsby'
 import React from 'react'
+import Lazyload from 'react-lazyload'
 import { format } from 'date-fns'
 import { buildImageObj, cn, getBlogUrl } from '../lib/helpers'
 import { imageUrlFor } from '../lib/image-url'
@@ -13,13 +14,14 @@ function BlogPostPreview (props) {
     <Link className={styles.root} to={getBlogUrl(props.publishedAt, props.slug.current)}>
       <div className={styles.leadMediaThumb}>
         {props.mainImage && props.mainImage.asset && (
-          <img
-            src={imageUrlFor(buildImageObj(props.mainImage))
-              .width(600)
-              .height(Math.floor((9 / 16) * 600))
-              .url() + '&auto=format&q=100'}
-            alt={props.mainImage.alt}
-          />
+          <Lazyload height={Math.floor((9 / 16) * 600)}>
+            <img
+              src={imageUrlFor(buildImageObj(props.mainImage))
+                .width(600)
+                .height(Math.floor((9 / 16) * 600))
+                .url() + '&auto=format&q=100'}
+              alt={props.mainImage.alt}
+            /></Lazyload>
         )}
       </div>
       <span className={styles.byline}>{format(props.publishedAt, 'DD.MM.YYYY')}</span>
