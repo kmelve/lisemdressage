@@ -43,24 +43,25 @@ const AboutPage = props => {
   }
 
   const { person } = data
-  const { name, _rawBio, image} = person
+  const { name, _rawBio, image } = person
   return (
     <Layout>
       <SEO title={name} slug='/about' />
 
       <Container>
-      {image && image.asset && (
-        <div className={styles.mainImage}>
-        <img
-          src={imageUrlFor(buildImageObj(image))
-            .width(2000)
-            .height(Math.floor((9 / 16) * 2000))
-            .fit('crop')
-            .url()}
-          alt={'Lise M'}
-        />
-      </div>
-      )}
+        {image && image.asset && (
+          <div className={styles.mainImage}>
+            <img
+              src={imageUrlFor(buildImageObj(image))
+                .width(2000)
+                .height(Math.floor((9 / 16) * 2000))
+                .fit('crop')
+
+                .url() + '&auto=format&q=100'}
+              alt={'Lise M'}
+            />
+          </div>
+        )}
         <h1 className={responsiveTitle1}>{name}</h1>
         <BlockContent
           blocks={_rawBio || []}

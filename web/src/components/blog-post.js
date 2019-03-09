@@ -34,7 +34,7 @@ function BlogPost (props) {
                     .width(1200)
                     .height(Math.floor(9 / 16 * 1200))
                     .fit('crop')
-                    .url()}
+                    .url() + '&auto=format&q=100'}
                   alt={mainImage.alt}
                 />
               </div>
@@ -42,7 +42,7 @@ function BlogPost (props) {
             <h1 className={styles.title}>{title}</h1>
             {_rawBody && <BlockContent blocks={_rawBody} />}
             <div>
-              <LazyLoad height="650">
+              <LazyLoad height='650'>
                 <ContentForm
                   article={{
                     slug,
@@ -62,7 +62,7 @@ function BlogPost (props) {
                   : format(new Date(publishedAt), 'MMMM Do YYYY')}
               </div>
             )}
-            {authors && <RoleList items={authors} title="Forfatter" />}
+            {authors && <RoleList items={authors} title='Forfatter' />}
             {categories && (
               <div className={styles.categories}>
                 <h3 className={styles.categoriesHeadline}>Categories</h3>

@@ -1,6 +1,6 @@
 import { Link } from 'gatsby'
 import React from 'react'
-import {format} from 'date-fns'
+import { format } from 'date-fns'
 import { buildImageObj, cn, getBlogUrl } from '../lib/helpers'
 import { imageUrlFor } from '../lib/image-url'
 import BlockText from './block-text'
@@ -17,7 +17,7 @@ function BlogPostPreview (props) {
             src={imageUrlFor(buildImageObj(props.mainImage))
               .width(600)
               .height(Math.floor((9 / 16) * 600))
-              .url()}
+              .url() + '&auto=format&q=100'}
             alt={props.mainImage.alt}
           />
         )}

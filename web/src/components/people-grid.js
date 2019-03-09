@@ -16,7 +16,7 @@ function ProfileCard ({ image, name, _rawBio }) {
               .width(600)
               .height(600)
               .fit('crop')
-              .url()}
+              .url() + '&auto=format&q=100'}
           />
         )}
       </div>

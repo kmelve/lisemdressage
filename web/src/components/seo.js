@@ -5,7 +5,6 @@ import { StaticQuery, graphql } from 'gatsby'
 import { buildImageObj } from '../lib/helpers'
 import { imageUrlFor } from '../lib/image-url'
 
-
 const detailsQuery = graphql`
   query SEOQuery {
     site: sanitySiteSettings(_id: { eq: "siteSettings" }) {
@@ -26,10 +25,10 @@ function SEO ({ description, lang, meta, keywords = [], title, image, slug }) {
           return
         }
         const ogImage = image && imageUrlFor(buildImageObj(image))
-                .width(1200)
-                .height(Math.floor(1 / 1.91 * 1200))
-                .fit('crop')
-                .url()
+          .width(1200)
+          .height(Math.floor(1 / 1.91 * 1200))
+          .fit('crop')
+          .url() + '&auto=format&q=100'
         const metaDescription = description || data.site.description
         return (
           <Helmet
